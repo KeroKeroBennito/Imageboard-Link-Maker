@@ -58,6 +58,7 @@ def submenu():
             selected_url = "https://www.dailymail.co.uk/home/index.rss"
             rss_scraper(selected_url)
         elif selection == "5":
+            clear_screen()
             main()
         else:
             print("Please Enter a Valid Input")
@@ -67,7 +68,7 @@ def extrasubmenu():
     while True:
         print("--- Brit/pol/ Paste Generator - Extras ---")
         print("1. No Trolling Addendum")
-        print("2. Industrial Society (and its consequences")
+        print("2. Industrial Society (and its consequences)")
         print("3. Main Menu")
 
         selection = input("Enter a selection: ")
@@ -83,7 +84,8 @@ def extrasubmenu():
             clear_screen()
             main()
         if selection == "2":
-            rules = ">INDUSTRIAL SOCIETY AND ITS FUTURE\nhttps://www.washingtonpost.com/wp-srv/national/longterm/unabomber/manifesto.text.htm??noredirect=on" \
+            rules = ">INDUSTRIAL SOCIETY AND ITS FUTURE\nhttps://www.washingtonpost.com/wp-srv/national/" \
+                    "longterm/unabomber/manifesto.text.htm??noredirect=on" \
                     "\nhttps://theanarchistlibrary.org/library/fc-industrial-society-and-its-future" \
                     "\nhttps://archive.org/details/IndustrialSocietyAndItsFuture-TheUnabombersManifesto \n"\
                     "\n>TECHNOLOGICAL SLAVERY" \
@@ -213,14 +215,16 @@ def insmenu():
               "1. During normal navigation the number keys (Usually ranging between 1 - 8)\n"
               "2. After a number is selected press enter to confirm your choice\n\n"
               "--- Article Reviewer ---\n"
-              "When using the Article Reviewer there are four extra commands\n"
+              "When using the Article Reviewer there are five extra commands\n"
               "1. 'clear' - This will clear your current article list and return you to the News site menu\n"
               "2. 'more' - This will return you to the news site with your links\n"
               "3. 'main' - This will return you to the Main Menu with your links\n"
               "4. 'done' - This will push your links through the Final Paste\n"
               "5. 'extras' - This will push you to the Extras Menu\n"
               "The Article Reviewer only currently takes 1 input number at a time\n"
-              "The Number selected will be deleted from the list\n\n"
+              "The Number selected will be deleted from the list\n"
+              "The Easiest Way to use the Article Reviewer is to use '1' until you find an article you like\n"
+              "You then move to the '2' key and so on\n\n"
               "--- Extras Menu ---\n"
               "The Extras Menu is Under Construction\n"
               "Currently there are only two pastes to pick from\n"
@@ -228,15 +232,14 @@ def insmenu():
               "Only your most recent pick will be saved to the print out\n\n"
               "--- Future Plans ---\n"
               "-- Add an 'all sites' option in the news site menus\n"
-              "--- The Article Reviewer is already able to handle X Number of articles")
+              "--- The Article Reviewer is already able to handle X Number of articles\n"
+              "--- Likely going to add a 'Next' command on")
 
         selection = input("\nPress Enter to return to Main Menu...\n:")
         clear_screen()
         main()
 
-
-
-
+#Program Start
 articles = []
 arti_wlinks = []
 extras = []
