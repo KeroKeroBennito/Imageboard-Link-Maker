@@ -1,7 +1,7 @@
 # Imageboard News-Link Maker
 Introducing the IBNLM or the **Imageboard News-Link Maker**, a Python-based Program designed to scrape headlines and links of RSS feeds of respective news sites currently built for Chan-style Imageboards.
 
-## Requirements/Prerequisits
+## Requirements/Prerequisites
 - `Python 3.10` or newer
 - Python 3.10 libraries
   - `beautifulsoup4`
