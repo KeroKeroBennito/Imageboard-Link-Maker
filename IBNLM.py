@@ -66,7 +66,6 @@ def submenu():
             print("All Sites Printout")
             selected_url = ["http://feeds.bbci.co.uk/news/uk/rss.xml", "https://www.theguardian.com/uk-news/rss",
                             "https://www.independent.co.uk/news/uk/rss", "https://www.dailymail.co.uk/home/index.rss"]
-            print(len(selected_url))
             rss_scraper(selected_url)
         elif selection == "6":
             clear_screen()
@@ -116,7 +115,8 @@ def extrasubmenu():
 
 
 def rss_scraper(selected_url):
-    print("RSS/XML scraper Function Pass")
+    #print("RSS/XML scraper Function Pass")
+    #print(selected_url)
     for y in selected_url:
         url = y
         xml = requests.get(url).text
@@ -156,6 +156,7 @@ def reviewer(articles, arti_wlinks):
         except ValueError:
             if selection == "clear":
                 articles.clear()
+                arti_wlinks.clear()
                 clear_screen()
                 print("--- Clearing Articles ---")
                 submenu()
@@ -180,6 +181,7 @@ def reviewer(articles, arti_wlinks):
 
 def size_check(articles, arti_wlinks):
     #print("Size Check Pass")
+    #print(len(articles))
     if len(articles) >= 8:
         print("This paste contains over 8 articles, do you wish to continue?")
 
