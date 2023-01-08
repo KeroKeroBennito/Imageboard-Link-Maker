@@ -38,26 +38,37 @@ def submenu():
         print("2. The Guardian")
         print("3. Independent")
         print("4. Daily Mail")
-        print("5. Return to main menu")
+        print("5. All Sites (Warning this will print 32 Articles)")
+        print("6. Return to main menu")
 
-        selection = input("Select a Site or Return to Menu (1-5): ")
+        selection = input("Select a Site or Return to Menu (1-6): ")
         if selection == "1":
             print("BBC News Print Out")
-            selected_url = "http://feeds.bbci.co.uk/news/uk/rss.xml"
+            selected_url = ["http://feeds.bbci.co.uk/news/uk/rss.xml"]
+            clear_screen()
             rss_scraper(selected_url)
         elif selection == "2":
             print("The Guardian Print Out")
-            selected_url = "https://www.theguardian.com/uk-news/rss"
+            selected_url = ["https://www.theguardian.com/uk-news/rss"]
+            clear_screen()
             rss_scraper(selected_url)
         elif selection == "3":
             print("The Independent Print out")
-            selected_url = "https://www.independent.co.uk/news/uk/rss"
+            selected_url = ["https://www.independent.co.uk/news/uk/rss"]
+            clear_screen()
             rss_scraper(selected_url)
         elif selection == "4":
             print("Daily Mail Print out")
-            selected_url = "https://www.dailymail.co.uk/home/index.rss"
+            selected_url = ["https://www.dailymail.co.uk/home/index.rss"]
+            clear_screen()
             rss_scraper(selected_url)
         elif selection == "5":
+            print("All Sites Printout")
+            selected_url = ["http://feeds.bbci.co.uk/news/uk/rss.xml", "https://www.theguardian.com/uk-news/rss",
+                            "https://www.independent.co.uk/news/uk/rss", "https://www.dailymail.co.uk/home/index.rss"]
+            print(len(selected_url))
+            rss_scraper(selected_url)
+        elif selection == "6":
             clear_screen()
             main()
         else:
@@ -104,23 +115,26 @@ def extrasubmenu():
             clear_screen()
 
 
-def rss_scraper(url):
+def rss_scraper(selected_url):
     print("RSS/XML scraper Function Pass")
-    xml = requests.get(url).text
-    soup = BeautifulSoup(xml, 'xml')
-    items = soup.find_all('item')
-    i = 1
+    for y in selected_url:
+        url = y
+        xml = requests.get(url).text
+        soup = BeautifulSoup(xml, 'xml')
+        items = soup.find_all('item')
+        i = 1
 
-    for item in items:
-        title = item.find('title').text
-        link = item.find('link').text
-        flink = link.replace("?at_medium=RSS&at_campaign=KARANGA", "").replace("?ns_mchannel=rss&ns_campaign=1490&ito=1490", "")
-        ftitle = ">" + title.replace(",", "*").replace(":", "#")
-        articles.append({title})
-        arti_wlinks.append({ftitle: flink})
-        i += 1
-        if i > 8:
-            reviewer(articles, arti_wlinks)
+        for item in items:
+            title = item.find('title').text
+            link = item.find('link').text
+            flink = link.replace("?at_medium=RSS&at_campaign=KARANGA", "").replace("?ns_mchannel=rss&ns_campaign=1490&ito=1490", "")
+            ftitle = ">" + title.replace(",", "*").replace(":", "#")
+            articles.append({title})
+            arti_wlinks.append({ftitle: flink})
+            i += 1
+            if i > 8:
+                break
+    reviewer(articles, arti_wlinks)
 
 def reviewer(articles, arti_wlinks):
     while True:
@@ -162,6 +176,7 @@ def reviewer(articles, arti_wlinks):
                 size_check(articles, arti_wlinks)
             else:
                 print("Please Enter a Valid Input")
+
 
 def size_check(articles, arti_wlinks):
     #print("Size Check Pass")
@@ -231,7 +246,7 @@ def insmenu():
               "You will only be allowed to print one prompt from the extras menu\n"
               "Only your most recent pick will be saved to the print out\n\n"
               "--- Future Plans ---\n"
-              "-- Add an 'all sites' option in the news site menus\n"
+              "-- Add an 'all sites' option in the news site menus (Added 8/1/23)\n"
               "--- The Article Reviewer is already able to handle X Number of articles\n"
               "--- Likely going to add a 'Next' command on")
 
