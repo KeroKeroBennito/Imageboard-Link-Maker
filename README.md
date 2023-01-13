@@ -9,7 +9,7 @@ Introducing the IBNLM or the **Imageboard News-Link Maker**, a Python-based Prog
   - `clipboard`
   - `requests`
 
-- a Terminal Editor
+- a Terminal Emulator
   - Tested with `GNOME Terminal` and `Windows Powershell`
 
 ## How to Use
