@@ -38,36 +38,43 @@ def submenu():
         print("2. The Guardian")
         print("3. Independent")
         print("4. Daily Mail")
-        print("5. All Sites (Warning this will print 32 Articles)")
-        print("6. Return to main menu")
+        print("5. Sky News")
+        print("6. All Sites (Warning this will print 40 Articles)")
+        print("7. Return to main menu")
 
-        selection = input("Select a Site or Return to Menu (1-6): ")
+        selection = input("Add Sites to Print (1-7): ")
         if selection == "1":
-            print("BBC News Print Out")
+            print("BBC News Printout")
             selected_url = ["http://feeds.bbci.co.uk/news/uk/rss.xml"]
             clear_screen()
             rss_scraper(selected_url)
         elif selection == "2":
-            print("The Guardian Print Out")
+            print("The Guardian Printout")
             selected_url = ["https://www.theguardian.com/uk-news/rss"]
             clear_screen()
             rss_scraper(selected_url)
         elif selection == "3":
-            print("The Independent Print out")
+            print("The Independent Printout")
             selected_url = ["https://www.independent.co.uk/news/uk/rss"]
             clear_screen()
             rss_scraper(selected_url)
         elif selection == "4":
-            print("Daily Mail Print out")
+            print("Daily Mail Printout")
             selected_url = ["https://www.dailymail.co.uk/home/index.rss"]
             clear_screen()
             rss_scraper(selected_url)
         elif selection == "5":
-            print("All Sites Printout")
-            selected_url = ["http://feeds.bbci.co.uk/news/uk/rss.xml", "https://www.theguardian.com/uk-news/rss",
-                            "https://www.independent.co.uk/news/uk/rss", "https://www.dailymail.co.uk/home/index.rss"]
+            print("Sky News Printout")
+            selected_url = ["https://feeds.skynews.com/feeds/rss/uk.xml"]
+            clear_screen()
             rss_scraper(selected_url)
         elif selection == "6":
+            print("All Sites Printout")
+            selected_url = ["http://feeds.bbci.co.uk/news/uk/rss.xml", "https://www.theguardian.com/uk-news/rss",
+                            "https://www.independent.co.uk/news/uk/rss", "https://www.dailymail.co.uk/home/index.rss",
+                            "https://feeds.skynews.com/feeds/rss/uk.xml"]
+            rss_scraper(selected_url)
+        elif selection == "7":
             clear_screen()
             main()
         else:
@@ -128,7 +135,7 @@ def rss_scraper(selected_url):
             title = item.find('title').text
             link = item.find('link').text
             flink = link.replace("?at_medium=RSS&at_campaign=KARANGA", "").replace("?ns_mchannel=rss&ns_campaign=1490&ito=1490", "")
-            ftitle = ">" + title.replace(",", "*").replace(":", "#")
+            ftitle = ">" + title.replace(",", "*").replace(":", "#").replace("'", "+")
             articles.append({title})
             arti_wlinks.append({ftitle: flink})
             i += 1
@@ -200,7 +207,8 @@ def finalprint(arti_wlinks):
     #print("final print function pass")
     printout = str(arti_wlinks)
     fprintout = printout.replace("[", "").replace("]", "").replace("{", "").replace("}", "\n").replace("'", "")\
-        .replace('"', "").replace(", ", "\n").replace(": ", "\n").replace("*", ",").replace("#",":")
+        .replace('"', "").replace(", ", "\n").replace(": ", "\n").replace("*", ",").replace("#",":").replace("+", "'")\
+        .replace("&:163;", "£").replace("\\xa0", "")
     #print(len(extras))
     if len(extras) == 1:
         #print("--- Extras Detected ---")
@@ -250,7 +258,8 @@ def insmenu():
               "--- Future Plans ---\n"
               "-- Add an 'all sites' option in the news site menus (Added 8/1/23)\n"
               "--- The Article Reviewer is already able to handle X Number of articles\n"
-              "--- Likely going to add a 'Next' command on")
+              "--- Likely going to add a 'Next' command on"
+              "-- Add a Toggle for Sites before scraping ")
 
         selection = input("\nPress Enter to return to Main Menu...\n:")
         clear_screen()
