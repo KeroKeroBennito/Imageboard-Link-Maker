@@ -25,4 +25,4 @@ Introducing the IBNLM or the **Imageboard News-Link Maker**, a Python-based Prog
 
 ## Additional Notes
 
-During testing it's worth mentioning that whilst IBNLM will work in the `comand prompt` in Windows, after the program has finished copying the output, the program will close immediately however the clipboard will save the output as normal.
+During testing it's worth mentioning that whilst IBNLM will work in the `command prompt` in Windows, after the program has finished copying the output, the program will close immediately however the clipboard will save the output as normal.
