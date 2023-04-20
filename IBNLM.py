@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 def main():
     while True:
-        print("--- Brit/pol/ Paste Generator ---")
+        print("--- NewsBoard Link Generator ---")
         print("1. Sites")
         print("2. Extras")
         print("3. Print Out Paste")
@@ -33,7 +33,7 @@ def main():
 
 def submenu():
     while True:
-        print("--- Brit/pol/ Paste Generator - Sites ---")
+        print("--- NewsBoard Link Generator - Sites ---")
         print("1. BBC News")
         print("2. The Guardian")
         print("3. Independent")
@@ -83,7 +83,7 @@ def submenu():
 
 def extrasubmenu():
     while True:
-        print("--- Brit/pol/ Paste Generator - Extras ---")
+        print("--- NewsBoard Link Generator - Extras ---")
         print("1. No Trolling Addendum")
         print("2. Industrial Society (and its consequences)")
         print("3. Main Menu")
@@ -146,7 +146,7 @@ def rss_scraper(selected_url):
 def reviewer(articles, arti_wlinks):
     while True:
         clear_screen()
-        print("--- Brit/pol/ Paste Generator - Article Selector ---")
+        print("--- NewsBoard Link Generator - Article Selector ---")
         for i, title in enumerate(articles):
             print(f'{i + 1}. {title}')
 
@@ -184,6 +184,7 @@ def reviewer(articles, arti_wlinks):
                 size_check(articles, arti_wlinks)
             else:
                 print("Please Enter a Valid Input")
+                clear_screen()
 
 
 def size_check(articles, arti_wlinks):
@@ -221,7 +222,7 @@ def finalprint(arti_wlinks):
         print(fprintout)
         clipboard.copy(fprintout)
 
-    print("\nThank You for using Brit/pol/ Paste maker!")
+    print("\nThank You for using NewsBoard!")
     print("Your output has been copied to your clipboard!")
     exit(0)
 
@@ -234,7 +235,7 @@ def dupezapper():
 
 def insmenu():
     while True:
-        print("--- Brit/pol/ Paste Generator - Instructions ---\n"
+        print("--- NewsBoard - Instructions ---\n"
               "--- General Navigation ---\n"
               "Disclaimer: This Program is still in beta\n"
               "1. During normal navigation the number keys (Usually ranging between 1 - 8)\n"
@@ -258,10 +259,10 @@ def insmenu():
               "--- Future Plans ---\n"
               "-- Add an 'all sites' option in the news site menus (Added 8/1/23)\n"
               "--- The Article Reviewer is already able to handle X Number of articles\n"
-              "--- Likely going to add a 'Next' command on"
+              "--- Likely going to add a 'Next' command on\n"
               "-- Add a Toggle for Sites before scraping ")
 
-        selection = input("\nPress Enter to return to Main Menu...\n:")
+        selection = input("\nPress Enter to return to Main Menu...\n")
         clear_screen()
         main()
 
